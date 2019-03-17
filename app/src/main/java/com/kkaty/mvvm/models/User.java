@@ -1,0 +1,40 @@
+package com.kkaty.mvvm.models;
+
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import android.util.Patterns;
+
+public class User {
+
+    @NonNull
+    private String mEmail;
+
+    @NonNull
+    private String mPassword;
+
+    @NonNull
+    public String getEmail() {
+        return mEmail;
+    }
+
+    public void setEmail(@NonNull String mEmail) {
+        this.mEmail = mEmail;
+    }
+
+    @NonNull
+    public String getPassword() {
+        return mPassword;
+    }
+
+    public void setPassword(@NonNull String mPassword) {
+        this.mPassword = mPassword;
+    }
+
+    public User(@NonNull final String email, @NonNull final String password){
+        mEmail =  email;
+        mPassword = password;
+    }
+    public boolean isInputDataValid(){
+        return !TextUtils.isEmpty(getEmail())&& Patterns.EMAIL_ADDRESS.matcher(getEmail()).matches() && getPassword().length()>5;
+    }
+}
